@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dirs>
+    <entry loc="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-1.fc39.x86_64" stamp="1707839807718"/>
+    <entry loc="/opt/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.9.v20231028-0858" stamp="1701466321794"/>
+    <entry loc="/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64" stamp="1707259617845"/>
+    <entry loc="/usr/lib/jvm/java-22-openjdk-22.0.0.0.36-1.rolling.fc39.x86_64" stamp="1710514752453"/>
+    <entry loc="/usr/lib/jvm/java-11-openjdk-11.0.22.0.7-1.fc39.x86_64" stamp="1707259906660"/>
+    <entry loc="/opt/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.9.v20231028-0858/jre" stamp="1701466321794"/>
+    <entry loc="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-1.fc39.x86_64/jre" stamp="1707839807258"/>
+</dirs>

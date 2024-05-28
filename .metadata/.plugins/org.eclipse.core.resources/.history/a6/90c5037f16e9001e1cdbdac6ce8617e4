@@ -1,0 +1,58 @@
+package net.javaguides.registration.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/search")
+public class BookServlet extends HttpServlet {
+    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/student";
+    private static final String JDBC_USER = "postgres";
+    private static final String JDBC_PASSWORD = "";
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String query = request.getParameter("query");
+
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+            String sql = "SELECT * FROM student WHERE title ILIKE ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, "%" + query + "%");
+                ResultSet rs = pstmt.executeQuery();
+
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<meta charset=\"UTF-8\">");
+                out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+                out.println("<title>Search Results</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Search Results</h1>");
+                out.println("<ul>");
+
+                while (rs.next()) {
+                    String bookName = rs.getString("title");
+                    out.println("<li>" + bookName + "</li>");
+                }
+
+                out.println("</ul>");
+                out.println("</body>");
+                out.println("</html>");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Handle any SQL errors as needed
+        }
+    }
+}
